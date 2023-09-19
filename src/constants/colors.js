@@ -5,3 +5,5 @@ const colors = {
   black: '#173147',
   grey: '#8B97A8',
 }
+
+export default colors
