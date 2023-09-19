@@ -18,7 +18,7 @@ const Onboarding = () => {
         <Text style={styles.subtitle}>
           Get organized by sorting out all your tasks and boost your productivity.
         </Text>
-        <Button>Log In</Button>
+        <Button type={'blue'}>Log In</Button>
         <Button>Get Started</Button>
       </View>
     </View>
