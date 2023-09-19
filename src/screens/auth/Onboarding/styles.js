@@ -1,8 +1,6 @@
 import { StyleSheet, Dimensions } from "react-native";
 import colors from '../../../constants/colors'
 
-const {height} = Dimensions.get('window')
-
 const styles = StyleSheet.create({
   container: {
     flex: 1,
@@ -14,6 +12,7 @@ const styles = StyleSheet.create({
   content: {
     padding: 46,
     paddingTop: 0,
+    backgroundColor: colors.white,
     // borderTopRightRadius: 30,
     // borderTopLeftRadius: 30,
   },

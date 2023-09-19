@@ -3,7 +3,7 @@ import { View, Image, Text } from 'react-native'
 import Button from '../../../components/Button'
 import styles from './styles'
 
-const Onboarding = () => {
+const Onboarding = ({navigation}) => {
   return (
     <View style={styles.container}>
       <View style={{flex: 1}}>
@@ -18,8 +18,8 @@ const Onboarding = () => {
         <Text style={styles.subtitle}>
           Get organized by sorting out all your tasks and boost your productivity.
         </Text>
-        <Button type={'blue'}>Log In</Button>
-        <Button>Get Started</Button>
+        <Button onPress={()=> navigation.navigate('Signin')} type={'blue'}>Log In</Button>
+        <Button onPress={()=> navigation.navigate('Signup')}>Get Started</Button>
       </View>
     </View>
   )
