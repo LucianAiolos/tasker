@@ -6,7 +6,7 @@ const styles = StyleSheet.create({
     marginHorizontal: 24,
   },
   footerText: {
-    colors: colors.grey,
+    color: colors.grey,
     fontSize: 15,
     textAlign: 'center',
     marginTop: 28,
