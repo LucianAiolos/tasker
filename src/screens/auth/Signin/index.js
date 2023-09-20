@@ -5,7 +5,7 @@ import styles from './styles'
 import Title from '../../../components/Title'
 import Input from '../../../components/Input'
 
-const Signin = () => {
+const Signin = ({navigation}) => {
   return (
     <SafeAreaView style={styles.container}>
       <Title>Welcome back!</Title>
@@ -13,7 +13,7 @@ const Signin = () => {
       <Input placeholder="email" />
       <Input placeholder="password" />
       <Text style={styles.footerText}>Not Registered?
-        <Text style={styles.footerLink}>Sign Up!</Text>
+        <Text onPress={()=> navigation.navigate('Signup')} style={styles.footerLink}>Sign Up!</Text>
       </Text>
     </SafeAreaView>
   )
