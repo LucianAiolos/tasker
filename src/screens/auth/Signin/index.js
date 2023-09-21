@@ -13,7 +13,12 @@ const Signin = ({navigation}) => {
       <Input placeholder="email" />
       <Input placeholder="password" />
       <Text style={styles.footerText}>Not Registered?
-        <Text onPress={()=> navigation.navigate('Signup')} style={styles.footerLink}>Sign Up!</Text>
+        <Text 
+          onPress={()=> navigation.navigate('Signup')} 
+          style={styles.footerLink}
+        >
+          Sign Up!
+        </Text>
       </Text>
     </SafeAreaView>
   )
