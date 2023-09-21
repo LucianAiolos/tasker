@@ -10,8 +10,8 @@ const Signin = ({navigation}) => {
     <SafeAreaView style={styles.container}>
       <Title>Welcome back!</Title>
       <Button>Login</Button>
-      <Input placeholder="email" />
-      <Input placeholder="password" />
+      <Input keyboardType='email-address' placeholder="email" />
+      <Input secureTextEntry placeholder="password" />
       <Text style={styles.footerText}>Not Registered?
         <Text 
           onPress={()=> navigation.navigate('Signup')} 

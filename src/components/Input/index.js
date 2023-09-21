@@ -6,7 +6,12 @@ import colors from "../../constants/colors";
 
 const Input = ({...props}) => {
   return (
-    <TextInput style={styles.input} placeholderTextColor={colors.midGrey} {...props} />
+    <TextInput 
+      style={styles.input} 
+      placeholderTextColor={colors.grey} 
+      keyboardType=''
+      {...props} 
+    />
   )
 }
 
