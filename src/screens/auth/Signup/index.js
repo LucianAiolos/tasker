@@ -21,8 +21,15 @@ const Signup = ({navigation}) => {
       <Input placeholder="Email" />
       <Input placeholder="Password" />
       <Input placeholder="Confirm Password" />
-      <View>
+      <View style={styles.row}>
         <Checkbox checked={agreed} onPress={onCheckboxPress}/>
+        <Text style={styles.agreeText}>
+          I agree to
+          <Text style={styles.link}> Terms and Conditions</Text>
+          {' '}and
+          <Text style={styles.link}> Privacy Policy</Text>
+        </Text>
+
       </View>
       <Button type={'blue'}>Create new account</Button>
       <Text style={styles.footerText}>Not Registered?
