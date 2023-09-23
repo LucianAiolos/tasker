@@ -8,9 +8,9 @@
 
 - (BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions
 {
-  [FIRApp configure];
   self.moduleName = @"tasker";
   // You can add your custom initial props in the dictionary below.
+  [FIRApp configure];
   // They will be passed down to the ViewController used by React Native.
   self.initialProps = @{};
 
