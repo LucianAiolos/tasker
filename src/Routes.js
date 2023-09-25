@@ -34,27 +34,27 @@ function Routes() {
 
   if (initializing) return null;
 
-  if (!user) {
-    return (
-      <View>
-        <Text style={{fontSize: 50}}>Login</Text>
-      </View>
-    );
-  }
+  // if (!user) {
+  //   return (
+  //     <View>
+  //       <Text style={{fontSize: 50}}>Login</Text>
+  //     </View>
+  //   );
+  // }
 
-  if(user) {
-    reutrn (
-      <Text style={{fontSize: 50}}>Welcome</Text>
-    )
-  }
+  // if(user) {
+  //   return (
+  //     <Text style={{fontSize: 50}}>Welcome</Text>
+  //   )
+  // }
 
-  // return (
-  //     <Stack.Navigator screenOptions={{headerShown: false}}>
-  //       <Stack.Screen name='Onboarding' component={Onboarding} />
-  //       <Stack.Screen name='Signin' component={Signin} />
-  //       <Stack.Screen name='Signup' component={Signup} />
-  //     </Stack.Navigator>
-  // );
+  return (
+      <Stack.Navigator screenOptions={{headerShown: false}}>
+        <Stack.Screen name='Onboarding' component={Onboarding} />
+        <Stack.Screen name='Signin' component={Signin} />
+        <Stack.Screen name='Signup' component={Signup} />
+      </Stack.Navigator>
+  );
 }
 
 export default React.memo(Routes);
