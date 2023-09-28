@@ -6,7 +6,7 @@
  */
 
 import React, {useEffect, useState} from 'react';
-import { View, Text } from 'react-native';
+import { View, Text, Image, StyleSheet } from 'react-native';
 import 'react-native-gesture-handler'
 import { createStackNavigator } from '@react-navigation/stack';
 import { createDrawerNavigator } from '@react-navigation/drawer';
@@ -58,16 +58,52 @@ function Routes() {
   // }
   const Tabs = () => {
     return (
-      <Tab.Navigator>
-        <Tab.Screen name="Home" component={Home} />
-        <Tab.Screen name="Tasks" component={Tasks} />
+      <Tab.Navigator
+        screenOptions={{
+          tabBarShowLable: false,
+          headerShown: false,
+        }}>
+        <Tab.Screen 
+          name="Home" 
+          component={Home} 
+          options={{
+            tabBarIcon: ({focused})=> (
+              <Image 
+                style={styles.icon}
+                source={
+                  focused 
+                    ? require('./assets/home-active.png') 
+                    : require('./assets/home-inactive.png')
+                } 
+              />
+            ),
+          }}
+        />
+        <Tab.Screen 
+          name="Tasks" 
+          component={Tasks} 
+          options={{
+            tabBarIcon: ({focused})=> (
+              <Image 
+                style={styles.icon}
+                source={
+                  focused 
+                    ? require('./assets/calendar-active.png') 
+                    : require('./assets/calendar-inactive.png')
+                } 
+              />
+            ),
+          }}
+        />
       </Tab.Navigator>
     )
   }
 
   if(user) {
     return(
-      <Drawer.Navigator>
+      <Drawer.Navigator
+        
+      >
         <Drawer.Screen name="Tabs" component={Tabs} />
         <Drawer.Screen name="AddTask" component={AddTask} />
       </Drawer.Navigator>
@@ -82,5 +118,12 @@ function Routes() {
       </Stack.Navigator>
   );
 }
+
+const styles = StyleSheet.create({
+  icon: {
+    height: 24,
+    width: 24,
+  }
+})
 
 export default React.memo(Routes);
