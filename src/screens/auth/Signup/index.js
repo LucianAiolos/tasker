@@ -14,49 +14,46 @@ const Signup = ({navigation}) => {
 
   })
 
-  const onChange = (value, key) => {
-    setValues(vals => ({
-      ...vals,
-      [key] : value,
-    }))
-  }
-
-  console.log("values:", values)
-
   const onCheckboxPress = () => {
     setAgreed(value => !value)
   }
+  console.log(values)
 
   const onSubmit = () => {
     //Validate inputs before creating user.
     const email = values.email
     const password = values.password
 
+    if(!values.first_name || !values.last_name){
+      Alert.alert('Please enter first name and last name')
+      return
+    }
     if(password !== values.confirm_password) {
       Alert.alert('Passwords do not match')
       return
     }
-
     if(!agreed) {
       Alert.alert('You must agree to the terms')
+      return
     }
 
     auth()
-  .createUserWithEmailAndPassword(email, password)
-  .then(() => {
-    console.log('User account created & signed in!');
-  })
-  .catch(error => {
-    if (error.code === 'auth/email-already-in-use') {
-      Alert.alert('That email address is already in use!');
-    }
+      .createUserWithEmailAndPassword(email, password)
+      .then(() => {
+        auth().currentUser.updateProfile({displayName: `${values.first_name} ${values.last_name}`})
+        console.log('User account created & signed in!');
+      })
+      .catch(error => {
+        if (error.code === 'auth/email-already-in-use') {
+          Alert.alert('That email address is already in use!');
+        }
 
-    if (error.code === 'auth/invalid-email') {
-      Alert.alert('That email address is invalid!');
-    }
+        if (error.code === 'auth/invalid-email') {
+          Alert.alert('That email address is invalid!');
+        }
 
-    console.error(error);
-  });
+        console.error(error);
+      });
   }
 
   return (
@@ -77,7 +74,6 @@ const Signup = ({navigation}) => {
           placeholder="Email" 
         />
         <Input 
-          onChangeText={(val) => onChange(val, 'password')} 
           secureTextEntry 
           placeholder="Password" 
         />
