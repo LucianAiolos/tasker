@@ -11,6 +11,7 @@ import 'react-native-gesture-handler'
 import { createStackNavigator } from '@react-navigation/stack';
 import { createDrawerNavigator } from '@react-navigation/drawer';
 import { createBottomTabNavigator } from '@react-navigation/bottom-tabs';
+import DrawerContent from './components/DrawerContent/index'
 import Onboarding from './screens/auth/Onboarding';
 import Home from './screens/app/Home'
 import Tasks from './screens/app/Tasks';
@@ -41,21 +42,6 @@ function Routes() {
 
   if (initializing) {return null}
 
- 
-
-  // if(user) {
-  //   const logOut = () => {
-  //     auth()
-  //       .signOut()
-  //       .then(()=> console.log("user signed out!"))
-  //   }
-  //   return (
-  //     <>
-  //       <Text style={{margin: 40, fontSize: 50}}>Welcome</Text>
-  //       <Text onPress={logOut} style={{margin: 40, fontSize: 30}}>Log Out</Text>
-  //     </>
-  //     )
-  // }
   const Tabs = () => {
     return (
       <Tab.Navigator
@@ -102,7 +88,8 @@ function Routes() {
   if(user) {
     return(
       <Drawer.Navigator
-        
+        screenOptions={{headerShown: false}}
+        drawerContent={(props) => <DrawerContent {...props}/>}
       >
         <Drawer.Screen name="Tabs" component={Tabs} />
         <Drawer.Screen name="AddTask" component={AddTask} />
