@@ -1,15 +1,23 @@
 import React from 'react'
-import { View, Image, Text } from 'react-native'
+import { Text } from 'react-native'
 import styles from './styles'
+import { ScrollView } from 'react-native-gesture-handler'
 import { SafeAreaView } from 'react-native-safe-area-context'
-import Button from '../../../components/Button'
 import Header from '../../../components/Header'
+import PlusIcon from '../../../components/PlusIcon'
+import Title from '../../../components/Title'
 
 const Home = ({navigation}) => {
-  console.log('home')
   return (
     <SafeAreaView style={styles.container}>
       <Header title="Home"/>
+
+      <ScrollView >
+        <Title type='thin'>Daily Tasks</Title>
+        
+      </ScrollView>
+
+      <PlusIcon />
     </SafeAreaView>
   )
 }

@@ -4,12 +4,11 @@ import styles from './styles'
 // import { TextInput } from "react-native-gesture-handler";
 import colors from "../../constants/colors";
 
-const Input = ({...props}) => {
+const Input = ({outlined, ...props}) => {
   return (
     <TextInput 
-      style={styles.input} 
+      style={[styles.input, outlined ? styles.outlined : null]} 
       placeholderTextColor={colors.grey} 
-      keyboardType=''
       {...props} 
     />
   )
