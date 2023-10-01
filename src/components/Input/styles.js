@@ -10,6 +10,12 @@ const styles = StyleSheet.create({
     color: colors.black,
     marginVertical: 12,
     fontSize: 15,
+  },
+  outlined: {
+    backgroundColor: colors.white,
+    borderWidth: 1,
+    borderColor: colors.grey,
+    marginHorizontal: 24,
   }
 })
 
