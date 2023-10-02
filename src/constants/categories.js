@@ -14,6 +14,10 @@ export const categories = [
     label: "Nice to Have",
     value: "nice_to_have",
   },
+  {
+    label: "low priority",
+    value: "whatever"
+  }
 ]
 
 

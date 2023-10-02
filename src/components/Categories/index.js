@@ -3,15 +3,13 @@ import { Text, TouchableOpacity, FlatList } from 'react-native'
 import styles from './styles'
 
 const Categories = ({categories, selectedCategory, onCategoryPress}) => {
-  console.log("in categories: ", categories)
-  console.log('hi')
   return (
     <FlatList
       horizontal
       data={categories}
-      keyExtractor={item => String(item)}
+      keyExtractor={item => String(item?.value)}
       showsHorizontalScrollIndicator={false}
-      style={{marginHorizontal: -24, marginTop: 24}}
+      style={{marginTop: 12}}
       renderItem={({item, index }) => {
         const selected = selectedCategory === item?.value
         const displayName = item?.label;
@@ -19,12 +17,14 @@ const Categories = ({categories, selectedCategory, onCategoryPress}) => {
         return (
           <TouchableOpacity
             onPress={()=> onCategoryPress(item?.value)}
+
             style={[
               styles.itemContainer,
               selected ? styles.selectedItemContainer : {} ,
-              index === 0 ? {marginLeft: 24} : null,
-            ]}>
-              <Text style={[styles.item, selected ? styles.selectedItem : null]}>
+              index === 0 ? {marginLeft: 24} : {},
+            ]}
+          >
+              <Text style={[styles.item, selected ? styles.selectedItem : {}]}>
                 {displayName}
               </Text>
             </TouchableOpacity>
