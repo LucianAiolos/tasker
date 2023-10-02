@@ -7,12 +7,16 @@ import Title from '../../../components/Title'
 import Input from '../../../components/Input'
 import Categories from '../../../components/Categories'
 import {categories} from '../../../constants/categories'
+import DateInput from '../../../components/DateInput'
 
 const AddTask = ({navigation}) => {
   const [category, setCategory] = useState()
+  const [deadline, setDeadline] = useState(new Date())
+
   const handleBack = () => {
     navigation.goBack()
   }
+  
   return (
     <SafeAreaView style={styles.container}>
       <Pressable hitSlop={8} style={styles.backContainer} onPress={handleBack}>
@@ -34,6 +38,8 @@ const AddTask = ({navigation}) => {
           onCategoryPress={setCategory}
         />
       </ScrollView>
+      <Text style={styles.label}>Deadline</Text>
+      <DateInput value={deadline} onChange={setDeadline} />
     </SafeAreaView>
   )
 }

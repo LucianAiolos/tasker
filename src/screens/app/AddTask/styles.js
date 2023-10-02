@@ -3,7 +3,7 @@ import colors from "../../../constants/colors";
 
 const styles = StyleSheet.create({
   container: {
-    flex: 1,
+    // flex: 1,  this was making the flatlist super tall
   },
   backContainer: {
     padding: 24,
@@ -18,6 +18,7 @@ const styles = StyleSheet.create({
     color: colors.black,
     marginHorizontal: 24,
     fontWeight: '500',
+    marginTop: 12,
   },
 })
 
