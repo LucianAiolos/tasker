@@ -25,3 +25,5 @@
       borderColor: colors.lightGrey,
     },
   })
+
+  export default styles

@@ -8,8 +8,6 @@ import Input from '../../../components/Input'
 import Categories from '../../../components/Categories'
 import {categories} from '../../../constants/categories'
 
-console.log(categories, 'in add task')
-
 const AddTask = ({navigation}) => {
   const [category, setCategory] = useState()
   const handleBack = () => {
