@@ -1,12 +1,17 @@
-import React from 'react'
+import React, {useState} from 'react'
 import styles from './styles'
 import { Pressable, Text, Image } from 'react-native'
 import { ScrollView } from 'react-native-gesture-handler'
 import { SafeAreaView } from 'react-native-safe-area-context'
 import Title from '../../../components/Title'
 import Input from '../../../components/Input'
+import Categories from '../../../components/Categories'
+import {categories} from '../../../constants/categories'
+
+console.log(categories, 'in add task')
 
 const AddTask = ({navigation}) => {
+  const [category, setCategory] = useState()
   const handleBack = () => {
     navigation.goBack()
   }
@@ -21,20 +26,19 @@ const AddTask = ({navigation}) => {
 
       <Title type='thin'>Add New Task</Title>
 
-      <Text style={styles.label}>Describge task</Text>
+      <Text style={styles.label}>Describe Task</Text>
       <Input outlined placeholder="Add task here " />
-      <ScrollView
-        horizontal={true}
-        style={{height: 100}}
-      >
-        <Text style={{backgroundColor: 'green', height: 50, width: 100, marginHorizontal: 10}}>OPTIMUS</Text>
-        <Text style={{backgroundColor: 'green', height: 50, width: 100, marginHorizontal: 10}}>OPTIMUS</Text>
-        <Text style={{backgroundColor: 'green', height: 50, width: 100, marginHorizontal: 10}}>OPTIMUS</Text>
-        <Text style={{backgroundColor: 'green', height: 50, width: 100, marginHorizontal: 10}}>OPTIMUS</Text>
-        <Text style={{backgroundColor: 'green', height: 50, width: 100, marginHorizontal: 10}}>OPTIMUS</Text>
+      <ScrollView>
+        <Text style={styles.label}>Type</Text>
+        <Categories 
+          categories={categories}   
+          selectedCategory={category} 
+          onCategoryPress={setCategory}
+        />
       </ScrollView>
     </SafeAreaView>
   )
 }
 
 export default React.memo(AddTask)
+
