@@ -1,6 +1,6 @@
 import React, {useState} from 'react'
 import styles from './styles'
-import { Pressable, Text, Image } from 'react-native'
+import { Pressable, Text, Image, Alert } from 'react-native'
 import { ScrollView } from 'react-native-gesture-handler'
 import { SafeAreaView } from 'react-native-safe-area-context'
 import Title from '../../../components/Title'
@@ -9,6 +9,7 @@ import Categories from '../../../components/Categories'
 import {categories} from '../../../constants/categories'
 import DateInput from '../../../components/DateInput'
 import Button from '../../../components/Button'
+import moment from 'moment'
 
 const AddTask = ({navigation}) => {
   const [category, setCategory] = useState()
@@ -20,15 +21,19 @@ const AddTask = ({navigation}) => {
   }
 
   const onSubmit = () => {
+    const today = moment(new Date()).format('YYYY-MM-DD')
+    const deadlineFormated = moment(deadline).format('YYYY-MM-DD')
     if(!title) {
       Alert.alert("Please enter a task title!")
       return
     } 
-    if(!category) {
-      Alert.alert("Please enter a task title!")
+    if(moment(deadlineFormated).isBefore(today)) {
+      Alert.alert("Please enter future date!")
       return
     } 
   }
+
+  console.log(title, moment(deadline).isBefore(new Date()))
 
   return (
     <SafeAreaView style={styles.container}>
