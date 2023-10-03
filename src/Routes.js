@@ -6,7 +6,7 @@
  */
 
 import React, {useEffect, useState} from 'react';
-import { View, Text, Image, StyleSheet } from 'react-native';
+import { Image, StyleSheet } from 'react-native';
 import 'react-native-gesture-handler'
 import { createStackNavigator } from '@react-navigation/stack';
 import { createDrawerNavigator } from '@react-navigation/drawer';
@@ -29,7 +29,6 @@ function Routes() {
   const [user, setUser] = useState();
 
   // Handle user state changes
-  console.log(user)
   function onAuthStateChanged(user) {
     setUser(user);
     if (initializing) {setInitializing(false)}
