@@ -1,6 +1,6 @@
 import React, {useState} from 'react'
 import styles from './styles'
-import { Pressable, Text, Image, Alert } from 'react-native'
+import { Pressable, Text, Image, Alert, ActivityIndicator } from 'react-native'
 import { ScrollView } from 'react-native-gesture-handler'
 import { SafeAreaView } from 'react-native-safe-area-context'
 import Title from '../../../components/Title'
@@ -16,7 +16,8 @@ const AddTask = ({navigation}) => {
   const [category, setCategory] = useState()
   const [title, setTitle] = useState()
   const [deadline, setDeadline] = useState(new Date())
-
+  const [loading, setLoading] = useState(false)
+  
   const handleBack = () => {
     navigation.goBack()
   }
@@ -24,6 +25,7 @@ const AddTask = ({navigation}) => {
   const onSubmit = () => {
     const today = moment(new Date()).format('YYYY-MM-DD')
     const deadlineFormated = moment(deadline).format('YYYY-MM-DD')
+    
     if(!title) {
       Alert.alert("Please enter a task title!")
       return
@@ -32,6 +34,7 @@ const AddTask = ({navigation}) => {
       Alert.alert("Please enter future date!")
       return
     } 
+    setLoading(true)
     firestore()
       .collection('Tasks')
       .doc('ABC')
@@ -41,11 +44,19 @@ const AddTask = ({navigation}) => {
         category,
       })
       .then(() => {
+        setLoading(false)
         console.log('Task added!');
-      });
+        navigation.navigate('Tasks')
+        setTitle('')
+        setDeadline(new Date())
+        setCategory(null)
+      })
+      .catch(e => {
+        console.log('Error adding task')
+        setLoading(false)
+        Alert.alert(e.message)
+      })
   }
-
-  console.log(title, moment(deadline).isBefore(new Date()))
 
   return (
     <SafeAreaView style={styles.container}>
@@ -75,14 +86,17 @@ const AddTask = ({navigation}) => {
       </ScrollView>
       <Text style={styles.label}>Deadline</Text>
       <DateInput value={deadline} onChange={setDeadline} />
-
-      <Button 
-        style={styles.button} 
-        type="blue" 
-        onPress={onSubmit}
-      >
-        Add
-      </Button>
+      {loading ? (
+        <ActivityIndicator  />
+      ) : (
+        <Button 
+          style={styles.button} 
+          type="blue" 
+          onPress={onSubmit}
+        >
+          Add Task
+        </Button>
+      )}      
     </SafeAreaView>
   )
 }

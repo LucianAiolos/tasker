@@ -29,7 +29,6 @@ function Routes() {
   const [user, setUser] = useState();
 
   // Handle user state changes
-  console.log(user)
   function onAuthStateChanged(user) {
     setUser(user);
     if (initializing) {setInitializing(false)}

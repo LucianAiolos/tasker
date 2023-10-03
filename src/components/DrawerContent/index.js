@@ -8,7 +8,6 @@ function DrawerContent(props) {
   const url1 = 'https://www.yonex.com/astrox-88-d-pro'
   const url2 = 'https://www.yonex.com/badminton/racquets/astrox/ax100zz'
   const {navigation} = props
-  console.log('props: ', props, props)
   const logout = () => {
     auth()
       .signOut()
