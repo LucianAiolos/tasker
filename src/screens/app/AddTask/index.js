@@ -10,6 +10,7 @@ import {categories} from '../../../constants/categories'
 import DateInput from '../../../components/DateInput'
 import Button from '../../../components/Button'
 import moment from 'moment'
+import firestore from '@react-native-firebase/firestore';
 
 const AddTask = ({navigation}) => {
   const [category, setCategory] = useState()
@@ -31,6 +32,17 @@ const AddTask = ({navigation}) => {
       Alert.alert("Please enter future date!")
       return
     } 
+    firestore()
+      .collection('Tasks')
+      .doc('ABC')
+      .set({
+        title,
+        deadline,
+        category,
+      })
+      .then(() => {
+        console.log('Task added!');
+      });
   }
 
   console.log(title, moment(deadline).isBefore(new Date()))

@@ -15,7 +15,7 @@ const styles = StyleSheet.create({
     alignItems: 'center',
   },
   text: {
-    color: colors.grey,
+    color: colors.black,
     fontSize: 15,
   },
   icon: {
