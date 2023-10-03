@@ -2,19 +2,15 @@ import { StyleSheet } from "react-native";
 import colors from "../../constants/colors";
 
 const styles = StyleSheet.create({
-  input: {
-    backgroundColor: colors.lightGrey,
-    borderRadius: 10,
-    marginVertical: 12,
-  },
   outlined: {
+    marginVertical: 12,
     paddingHorizontal: 24,
     paddingVertical: 13,
+    marginHorizontal: 24,
     backgroundColor: colors.white,
     borderWidth: 1,
     borderRadius: 10,
     borderColor: colors.grey,
-    marginHorizontal: 24,
     flexDirection: 'row',
     alignItems: 'center',
   },
