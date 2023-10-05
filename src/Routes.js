@@ -28,13 +28,12 @@ const Stack = createStackNavigator()
 
 function Routes() {
   const dispatch = useDispatch()
-  const user = useSelector(state => state.user)
+  const user = useSelector(state => state.user.data)
   const [initializing, setInitializing] = useState(true);
 
   // Handle user state changes
   function onAuthStateChanged(user) {
-    console.log(user, 'in Routes')
-    // dispatch (setUser(user))
+    dispatch (setUser(user))
     if (initializing) {setInitializing(false)}
   }
 

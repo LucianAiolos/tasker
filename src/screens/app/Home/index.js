@@ -9,9 +9,8 @@ import Title from '../../../components/Title'
 import { useSelector } from 'react-redux'
 
 const Home = ({navigation}) => {
-  const user = useSelector(state => state.user)
-
-  console.log(user, 'in homejs')
+  const user = useSelector(state => state.user.data)
+  
   return (
     <SafeAreaView style={styles.container}>
       <Header title="Home"/>
