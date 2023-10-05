@@ -62,6 +62,8 @@ const Signup = ({navigation}) => {
       });
   }
 
+  
+
   return (
     <SafeAreaView style={styles.container}>
       <ScrollView showsVerticalScrollIndicator={false} />
