@@ -11,8 +11,10 @@ import DateInput from '../../../components/DateInput'
 import Button from '../../../components/Button'
 import moment from 'moment'
 import firestore from '@react-native-firebase/firestore';
+import {useSelector, useDispatch} from 'react-redux'
 
 const AddTask = ({navigation}) => {
+  const user = useSelector(state => state.user)
   const [category, setCategory] = useState()
   const [title, setTitle] = useState()
   const [deadline, setDeadline] = useState(new Date())
@@ -21,7 +23,7 @@ const AddTask = ({navigation}) => {
   const handleBack = () => {
     navigation.goBack()
   }
-
+  
   const onSubmit = () => {
     const today = moment(new Date()).format('YYYY-MM-DD')
     const deadlineFormated = moment(deadline).format('YYYY-MM-DD')
@@ -36,28 +38,29 @@ const AddTask = ({navigation}) => {
     } 
     setLoading(true)
     firestore()
-      .collection('Tasks')
-      .doc('ABC')
-      .set({
-        title,
-        deadline,
-        category,
-      })
-      .then(() => {
-        setLoading(false)
-        console.log('Task added!');
-        navigation.navigate('Tasks')
-        setTitle('')
-        setDeadline(new Date())
-        setCategory(null)
-      })
-      .catch(e => {
-        console.log('Error adding task')
-        setLoading(false)
-        Alert.alert(e.message)
-      })
+    .collection('Tasks')
+    .doc(user.uid)
+    .set({
+      title,
+      deadline,
+      category,
+    })
+    .then(() => {
+      setLoading(false)
+      console.log('Task added!');
+      navigation.navigate('Tasks')
+      setTitle('')
+      setDeadline(new Date())
+      setCategory(null)
+    })
+    .catch(e => {
+      console.log('Error adding task')
+      setLoading(false)
+      Alert.alert(e.message)
+    })
   }
-
+  console.log(user, 'user uid in addtask')
+  
   return (
     <SafeAreaView style={styles.container}>
       <Pressable hitSlop={8} style={styles.backContainer} onPress={handleBack}>

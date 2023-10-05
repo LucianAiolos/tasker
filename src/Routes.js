@@ -6,7 +6,8 @@
  */
 
 import React, {useEffect, useState} from 'react';
-import { View, Text, Image, StyleSheet } from 'react-native';
+import {useDispatch, useSelector} from 'react-redux'
+import { Image, StyleSheet } from 'react-native';
 import 'react-native-gesture-handler'
 import { createStackNavigator } from '@react-navigation/stack';
 import { createDrawerNavigator } from '@react-navigation/drawer';
@@ -19,18 +20,21 @@ import AddTask from './screens/app/AddTask';
 import Signin from './screens/auth/Signin';
 import Signup from './screens/auth/Signup';
 import auth from '@react-native-firebase/auth';
+import { setUser } from './redux/userSlice';
 
 const Drawer = createDrawerNavigator()
 const Tab = createBottomTabNavigator()
 const Stack = createStackNavigator()
 
 function Routes() {
+  const dispatch = useDispatch()
+  const user = useSelector(state => state.user)
   const [initializing, setInitializing] = useState(true);
-  const [user, setUser] = useState();
 
   // Handle user state changes
   function onAuthStateChanged(user) {
-    setUser(user);
+    console.log(user, 'in Routes')
+    // dispatch (setUser(user))
     if (initializing) {setInitializing(false)}
   }
 

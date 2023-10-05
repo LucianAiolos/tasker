@@ -6,8 +6,12 @@ import { SafeAreaView } from 'react-native-safe-area-context'
 import Header from '../../../components/Header'
 import PlusIcon from '../../../components/PlusIcon'
 import Title from '../../../components/Title'
+import { useSelector } from 'react-redux'
 
 const Home = ({navigation}) => {
+  const user = useSelector(state => state.user)
+
+  console.log(user, 'in homejs')
   return (
     <SafeAreaView style={styles.container}>
       <Header title="Home"/>
