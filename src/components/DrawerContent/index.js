@@ -3,14 +3,18 @@ import {DrawerContentScrollView} from '@react-navigation/drawer';
 import {StyleSheet, Text, Linking} from 'react-native'
 import colors from '../../constants/colors';
 import auth from '@react-native-firebase/auth';
+import {useDispatch} from 'react-redux'
+import {logOut} from '../../redux/userSlice'
 
 function DrawerContent(props) {
+  const dispatch = useDispatch()
   const url1 = 'https://www.yonex.com/astrox-88-d-pro'
   const url2 = 'https://www.yonex.com/badminton/racquets/astrox/ax100zz'
   const {navigation} = props
   const logout = () => {
     auth()
       .signOut()
+      .then(()=> dispatch(logOut()))
       .then(()=> console.log('loged out!'))
   }
 

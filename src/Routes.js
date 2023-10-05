@@ -28,17 +28,20 @@ const Stack = createStackNavigator()
 
 function Routes() {
   const dispatch = useDispatch()
-  const user = useSelector(state => state.user)
+  const user = useSelector(state => state.user.data)
   const [initializing, setInitializing] = useState(true);
+
+  console.log('user in routes: ', user)
 
   // Handle user state changes
   function onAuthStateChanged(user) {
-    console.log(user, 'in Routes')
-    // dispatch (setUser(user))
+    console.log('setting user ROUTES', user)
+    dispatch (setUser(user))
     if (initializing) {setInitializing(false)}
   }
 
   useEffect(() => {
+    console.log('subscribing ROUTES')
     const subscriber = auth().onAuthStateChanged(onAuthStateChanged);
     return subscriber; // unsubscribe on unmount
   }, []);

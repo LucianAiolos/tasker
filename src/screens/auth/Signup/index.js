@@ -14,10 +14,16 @@ const Signup = ({navigation}) => {
 
   })
 
+  const onChange = (value, key) => {
+    setValues(vals => ({
+      ...vals,
+      [key] : value,
+    }))
+  }
+
   const onCheckboxPress = () => {
     setAgreed(value => !value)
   }
-  console.log(values)
 
   const onSubmit = () => {
     //Validate inputs before creating user.
@@ -56,6 +62,8 @@ const Signup = ({navigation}) => {
       });
   }
 
+  
+
   return (
     <SafeAreaView style={styles.container}>
       <ScrollView showsVerticalScrollIndicator={false} />
@@ -74,6 +82,7 @@ const Signup = ({navigation}) => {
           placeholder="Email" 
         />
         <Input 
+          onChangeText={(val) => onChange(val, 'password')} 
           secureTextEntry 
           placeholder="Password" 
         />
