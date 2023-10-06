@@ -33,20 +33,18 @@ function Routes() {
 
   // Handle user state changes
   function onAuthStateChanged(user) {
-    console.log('setting user ROUTES', user)
     dispatch (setUser(user))
     if (initializing) {setInitializing(false)}
   }
 
   useEffect(() => {
-    console.log('subscribing ROUTES')
     const subscriber = auth().onAuthStateChanged(onAuthStateChanged);
     return subscriber; // unsubscribe on unmount
   }, []);
 
-  if (initializing) {return null}
+  // console.log('IN ROUTES, user UID: ', user.uid)
 
-  console.log('user in routes', user)
+  if (initializing) {return null}
 
   const Tabs = () => {
     return (
