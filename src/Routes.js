@@ -31,8 +31,6 @@ function Routes() {
   const user = useSelector(state => state.user.data)
   const [initializing, setInitializing] = useState(true);
 
-  console.log('user in routes: ', user)
-
   // Handle user state changes
   function onAuthStateChanged(user) {
     console.log('setting user ROUTES', user)
@@ -47,6 +45,8 @@ function Routes() {
   }, []);
 
   if (initializing) {return null}
+
+  console.log('user in routes', user)
 
   const Tabs = () => {
     return (
