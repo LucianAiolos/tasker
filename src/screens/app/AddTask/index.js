@@ -14,7 +14,7 @@ import firestore from '@react-native-firebase/firestore';
 import {useSelector, useDispatch} from 'react-redux'
 
 const AddTask = ({navigation}) => {
-  const user = useSelector(state => state.user)
+  const user = useSelector(state => state.user.data)
   const [category, setCategory] = useState()
   const [title, setTitle] = useState()
   const [deadline, setDeadline] = useState(new Date())
@@ -38,28 +38,28 @@ const AddTask = ({navigation}) => {
     } 
     setLoading(true)
     firestore()
-    .collection('Tasks')
-    .doc(user.uid)
-    .set({
-      title,
-      deadline,
-      category,
-    })
-    .then(() => {
-      setLoading(false)
-      console.log('Task added!');
-      navigation.navigate('Tasks')
-      setTitle('')
-      setDeadline(new Date())
-      setCategory(null)
-    })
-    .catch(e => {
-      console.log('Error adding task')
-      setLoading(false)
-      Alert.alert(e.message)
-    })
+      .collection('Tasks')
+      .add({
+        title,
+        deadline,
+        category,
+        checked: false,
+        userId: user.uid,
+      })
+      .then(() => {
+        setLoading(false)
+        console.log('Task added!');
+        navigation.navigate('Tasks')
+        setTitle('')
+        setDeadline(new Date())
+        setCategory(null)
+      })
+      .catch(e => {
+        console.log('Error adding task')
+        setLoading(false)
+        Alert.alert(e.message)
+      })
   }
-  console.log(user, 'user uid in addtask')
   
   return (
     <SafeAreaView style={styles.container}>

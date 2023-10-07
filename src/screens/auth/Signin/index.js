@@ -22,10 +22,6 @@ const Signin = ({navigation}) => {
       .then(() => {
         console.log('User signed in!');
       })
-      .then(()=> {
-        const user = auth().currentUser
-        console.log(user,' user in signin')
-      })
       .catch(error => {
         if (error.code === 'auth/email-already-in-use') {
           Alert.alert('That email address is already in use!');
