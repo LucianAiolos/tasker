@@ -15,6 +15,9 @@ const styles = StyleSheet.create({
     color: colors.black,  
     marginLeft: 8,
   },
+  checked: {
+    textDecorationLine: 'line-through',
+  },
 })
 
 export default styles

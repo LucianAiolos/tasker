@@ -9,6 +9,9 @@ export const tasksSlice = createSlice({
     setTasks: (state, action) => {
       state.data = action.payload
     },
+    setToUpdate: (state, action) => {
+      state.data = action.payload
+    },
   },
 })
 
