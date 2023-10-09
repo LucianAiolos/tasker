@@ -1,6 +1,6 @@
 import React, {useEffect, useState} from 'react'
-import { FlatList, Text, View } from 'react-native'
-import { SafeAreaView } from 'react-native-safe-area-context'
+import { FlatList, SafeAreaView, Text, View } from 'react-native'
+import firestore from '@react-native-firebase/firestore'
 import Title from '../../../components/Title'
 import PlusIcon from '../../../components/PlusIcon'
 import Header from '../../../components/Header'
@@ -8,6 +8,7 @@ import Checkbox from '../../../components/Checkbox'
 import Categories from '../../../components/Categories'
 import { categories } from '../../../constants/categories'
 import {useSelector, useDispatch} from 'react-redux'
+import { setToUpdate } from '../../../redux/tasksSlice'
 import styles from './styles'
 
 const Tasks = ({navigation}) => {
@@ -33,7 +34,8 @@ const Tasks = ({navigation}) => {
         checked: item?.checked,
       })
       .then(()=> {
-        dispatch(setToUpdate())
+        console.log('dispatching checked in TASKS')
+        dispatch(setToUpdate(filteredTasks))
       })
   }
 
@@ -59,7 +61,7 @@ const Tasks = ({navigation}) => {
             />
           </>
         }
-        data={tasks} 
+        data={filteredTasks} 
         renderItem={renderTask}
         keyExtractor={(item => String(item?.uid))}
       />

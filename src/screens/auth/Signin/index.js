@@ -33,8 +33,7 @@ const Signin = ({navigation}) => {
 
   return (
     <SafeAreaView style={styles.container}>
-      <Title>Welcome back!</Title>
-      <Button onPress={onSubmit}>Login</Button>
+      <Title style={{marginBottom: 24}}>Welcome back!</Title>
       <Input 
         keyboardType='email-address' 
         placeholder="email" 
@@ -45,6 +44,7 @@ const Signin = ({navigation}) => {
         placeholder="password" 
         onChangeText={(val) => onChange(val, 'password')} 
         />
+      <Button style={{marginTop: 16}} onPress={onSubmit}>Login</Button>
       <Text style={styles.footerText}>Not Registered?
         <Text 
           onPress={()=> navigation.navigate('Signup')} 

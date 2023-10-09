@@ -10,11 +10,12 @@ export const tasksSlice = createSlice({
       state.data = action.payload
     },
     setToUpdate: (state, action) => {
+      console.log('inTaskSLICE:>>' )
       state.data = action.payload
     },
   },
 })
 
-export const { setTasks } = tasksSlice.actions
+export const { setTasks, setToUpdate } = tasksSlice.actions
 
 export default tasksSlice.reducer
