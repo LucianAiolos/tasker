@@ -4,6 +4,7 @@ const styles = StyleSheet.create({
   container: {
     flex: 1,
     marginHorizontal: 24,
+    marginTop: 24,
   },
   footerText: {
     color: colors.grey,

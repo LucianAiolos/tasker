@@ -42,7 +42,11 @@ function Routes() {
     return subscriber; // unsubscribe on unmount
   }, []);
 
-  // console.log('IN ROUTES, user UID: ', user.uid)
+  console.log('IN ROUTES, user: ', user)
+
+  useEffect(()=> {
+    console.log('refreshed, in ROUTES')
+  },[user])
 
   if (initializing) {return null}
 

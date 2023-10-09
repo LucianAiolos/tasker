@@ -12,8 +12,10 @@ import Button from '../../../components/Button'
 import moment from 'moment'
 import firestore from '@react-native-firebase/firestore';
 import {useSelector, useDispatch} from 'react-redux'
+import { setToUpdate } from '../../../redux/tasksSlice'
 
 const AddTask = ({navigation}) => {
+  const dispatch = useDispatch()
   const user = useSelector(state => state.user.data)
   const [category, setCategory] = useState()
   const [title, setTitle] = useState()
@@ -48,7 +50,8 @@ const AddTask = ({navigation}) => {
       })
       .then(() => {
         setLoading(false)
-        console.log('Task added!');
+        dispatch(setToUpdate())
+        console.log('Task added!, ADD TASK');
         navigation.navigate('Tasks')
         setTitle('')
         setDeadline(new Date())
