@@ -14,11 +14,11 @@ import styles from './styles'
 const Tasks = ({navigation}) => {
   const dispatch = useDispatch()
   const tasks = useSelector(state => state.tasks.data)
-  const [category, setCategory] = useState()
+  const [category, setCategory] = useState('all')
   const [filteredTasks, setFilteredTasks] = useState([])
 
   useEffect(()=> {
-    if(category) {
+    if(category && category !== 'all') {
       const filtered = tasks?.filter(task => task?.category === category)
       setFilteredTasks(filtered)
     } else {
@@ -31,11 +31,11 @@ const Tasks = ({navigation}) => {
       .collection('Tasks')
       .doc(item?.uid)
       .update({
-        checked: item?.checked,
+        checked: !item.checked,
       })
       .then(()=> {
         console.log('dispatching checked in TASKS')
-        dispatch(setToUpdate(filteredTasks))
+        dispatch(setToUpdate())
       })
   }
 
@@ -43,7 +43,7 @@ const Tasks = ({navigation}) => {
     return (
       <View style={styles.row}>
         <Checkbox checked={item.checked} onPress={()=> onTaskUpdate(item)} />
-        <Text style={[styles.taskText, item.checked? styles.checked : {}]}>{item.title}    {item.category}</Text>
+        <Text style={[styles.taskText, item.checked? styles.checked : {}]}>{item.title}</Text>
       </View>
     )
   }
@@ -55,7 +55,7 @@ const Tasks = ({navigation}) => {
           <>
             <Title type='thin'>To Do Tasks</Title>
             <Categories 
-              categories={categories}   
+              categories={[{label: 'All', value: 'all' }, ...categories]}   
               selectedCategory={category} 
               onCategoryPress={setCategory}
             />

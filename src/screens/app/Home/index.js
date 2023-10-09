@@ -8,12 +8,14 @@ import Header from '../../../components/Header'
 import PlusIcon from '../../../components/PlusIcon'
 import Title from '../../../components/Title'
 import { useSelector, useDispatch } from 'react-redux'
-import { setTasks } from '../../../redux/tasksSlice';
+import { setTasks, setToUpdate } from '../../../redux/tasksSlice';
 
 const Home = ({navigation}) => {
   const user = useSelector(state => state.user.data)
   const tasks = useSelector(state => state.tasks.data)
+  const toUpdate = useSelector(state => state.tasks.toUpdate)
   const dispatch = useDispatch()
+  console.log('toUpdate HOME', toUpdate)
 
   useEffect(() => {
     firestore()
@@ -24,7 +26,6 @@ const Home = ({navigation}) => {
         const tasksList = []
 
         querySnapshot.forEach(documentSnapshot => {
-          console.log('Task ID: ', documentSnapshot.id, documentSnapshot.data());
           tasksList.push({
             uid: documentSnapshot.id, 
             ...(documentSnapshot.data() || {}),
@@ -32,7 +33,7 @@ const Home = ({navigation}) => {
         });
         dispatch(setTasks(tasksList))
       });
-  }, [user, dispatch]);
+  }, [user, dispatch, toUpdate]);
   
   return (
     <SafeAreaView style={styles.container}>
