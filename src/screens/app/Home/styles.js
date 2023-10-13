@@ -7,9 +7,25 @@ const styles = StyleSheet.create({
   },
   row: {
     flexDirection: 'row',
-    alignItems: 'center',
+    alignItems: 'between',
     marginHorizontal: 24,
   },
+  title: {
+    color: colors.purple,
+    fontSize: 16,
+  },
+  subtitle: {
+    fontSize: 12,
+    marginTop: 8,
+    color: 'rbga(64, 53,114,0.5)',
+  },
+  box: {
+    backgroundColor: colors.lightGrey,
+    borderRadius: 15,
+    padding: 22,
+    marginHorizontal: 24,
+    marginVertical: 72,
+  }
 })
 
 export default styles

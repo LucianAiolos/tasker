@@ -11,7 +11,7 @@ const getStyles = (type) =>  StyleSheet.create({
   },
   label: {
     marginBottom: 13,
-    fontSize: 10,
+    fontSize: 12,
     color: type === 'error' ? colors.red : colors.blue,
   },
   count: {

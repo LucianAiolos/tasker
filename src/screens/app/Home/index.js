@@ -9,6 +9,7 @@ import { useSelector, useDispatch } from 'react-redux'
 import { setTasks, setToUpdate } from '../../../redux/tasksSlice';
 import StatusCard from '../../../components/StatusCard';
 import moment from 'moment';
+import { TouchableOpacity } from 'react-native-gesture-handler';
 
 const Home = ({navigation}) => {
   const user = useSelector(state => state.user.data)
@@ -74,6 +75,13 @@ const Home = ({navigation}) => {
           <StatusCard label="Due Deadline" count={counts?.dueDeadline} />
           <StatusCard label="Quick Win" count={counts?.quickWin} />
         </View>
+
+        <TouchableOpacity style={styles.box} onPress={()=> navigation.navigate('Tasks')} >
+          <Text style={styles.title}>Check all my tasks</Text>
+          <Text style={styles.subtitle}>
+            See all tasks and filter them by categories you have selected
+          </Text>
+        </TouchableOpacity>
       </ScrollView>
 
       <PlusIcon />
