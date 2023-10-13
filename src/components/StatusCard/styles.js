@@ -6,7 +6,7 @@ const getStyles = (type) =>  StyleSheet.create({
     backgroundColor: type === 'error' ? colors.lightRed : colors.lightGrey,
     borderRadius: 15,
     padding: 12,
-    marginRight: 8,
+    marginRight: 0,
     width: '30%',
   },
   label: {

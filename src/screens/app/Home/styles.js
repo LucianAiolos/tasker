@@ -7,7 +7,7 @@ const styles = StyleSheet.create({
   },
   row: {
     flexDirection: 'row',
-    alignItems: 'between',
+    justifyContent: 'space-between',
     marginHorizontal: 24,
   },
   title: {
