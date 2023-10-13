@@ -5,7 +5,6 @@ import styles from './styles'
 
 const Header = ({title}) => {
   const navigation = useNavigation()
-
   const openDrawer = () => {
     navigation.openDrawer()
   }
@@ -15,8 +14,8 @@ const Header = ({title}) => {
       <Pressable onPress={openDrawer} hitSlop={8}>
         <Image style={styles.icon} source={require('../../assets/menu.png')} />
       </Pressable>
-      <Text>{title}</Text>
-      <View  />
+      <Text style={styles.title}>{title}</Text>
+      <Text style={styles.ghost}>G</Text>
     </View>
   )
 }

@@ -6,17 +6,22 @@ const styles = StyleSheet.create({
     flexDirection: 'row',
     justifyContent: 'space-between',
     alignItems: 'center',
-    padding: 14,
+    padding: 24,
   },
   title: {
     fontSize: 16,
     color: colors.purple,
     fontWeight: '500',
+    // marginRight: 24,
   },
   icon: {
     width: 24,
     height: 24,
-  }
+  },
+  ghost: {
+    fontSize: 26,
+    color: 'transparent',
+  },
 })
 
 export default styles
