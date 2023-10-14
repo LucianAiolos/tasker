@@ -18,6 +18,15 @@ const styles = StyleSheet.create({
   checked: {
     textDecorationLine: 'line-through',
   },
+  delete: {
+    backgroundColor: colors.red,
+    width: 18,
+    height: 18,
+    color: colors.white,
+    borderRadius: 15,
+    textAlign: 'center',
+    fontWeight: '700',
+  },
 })
 
 export default styles
