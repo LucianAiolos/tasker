@@ -17,7 +17,7 @@ const styles = StyleSheet.create({
   subtitle: {
     fontSize: 12,
     marginTop: 8,
-    color: 'rbga(64, 53,114,0.5)',
+    color: 'rgba(64, 53,114,0.7)',
   },
   box: {
     backgroundColor: colors.lightGrey,

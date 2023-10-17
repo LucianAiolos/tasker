@@ -34,10 +34,10 @@ const AddTask = ({navigation}) => {
       Alert.alert("Please enter a task title!")
       return
     } 
-    if(moment(deadlineFormated).isBefore(today)) {
-      Alert.alert("Please enter future date!")
-      return
-    } 
+      if(moment(deadlineFormated).isBefore(today)) {
+        Alert.alert("Please enter future date!")
+        return
+      } 
     setLoading(true)
     firestore()
       .collection('Tasks')

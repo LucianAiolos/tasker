@@ -27,8 +27,9 @@ const Tasks = ({navigation}) => {
   }, [category, tasks])
 
   const onTaskUpdate = (item) => {
+    console.log('TASKS')
     firestore()
-      .collection('Tasks')
+      .collection('Tasks')  
       .doc(item?.uid)
       .update({
         checked: !item.checked,
@@ -39,11 +40,27 @@ const Tasks = ({navigation}) => {
       })
   }
 
+  // useEffect(()=> {
+
+  // }, [tasks])
+
+  const deleteTask = (uid) => {
+    firestore()
+      .collection('Tasks')
+      .doc(uid)
+      .delete()
+      .then(() => {
+        console.log('Task deleted!');
+        dispatch(setToUpdate())
+      });
+  }
+
   const renderTask = ({item}) => {
     return (
       <View style={styles.row}>
         <Checkbox checked={item.checked} onPress={()=> onTaskUpdate(item)} />
         <Text style={[styles.taskText, item.checked? styles.checked : {}]}>{item.title}</Text>
+        <Text style={styles.delete} onPress={() => deleteTask(item.uid)}>X</Text>
       </View>
     )
   }
